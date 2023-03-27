@@ -1,8 +1,7 @@
 import os
 import sys
 
-from ._data import (clang_format_file, clang_tidy_file, cmake_file,
-                    gitignore_file, main_file, readme_file)
+from ._data import file_to_function_map
 
 
 def main():
@@ -29,29 +28,20 @@ def main():
 
     # create project files
     try:
-        with open(f"{project_name}/CMakeLists.txt", "w") as f:
-            f.write(cmake_file(project_name))
-
-        with open(f"{project_name}/.clang-format", "w") as f:
-            f.write(clang_format_file())
-
-        with open(f"{project_name}/.clang-tidy", "w") as f:
-            f.write(clang_tidy_file())
-
-        with open(f"{project_name}/.gitignore", "w") as f:
-            f.write(gitignore_file())
-
-        with open(f"{project_name}/src/main.cpp", "w") as f:
-            f.write(main_file())
-        
-        with open(f"{project_name}/README.md", "w") as f:
-            f.write(readme_file(project_name))
-
-    except OSError:
+        for file_name, file_info in file_to_function_map.items():
+            file_path = f"{project_name}/{file_name}"
+            with open(file_path, "w") as f:
+                if file_info["require_name"]:
+                    f.write(file_info["func"](project_name))
+                else:
+                    f.write(file_info["func"]())
+    except OSError as e:
         print("Error creating project files")
+        print("Error:", e)
         return
 
     print("Project created successfully")
+
 
 if __name__ == "__main__":
     main()

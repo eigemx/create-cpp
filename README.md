@@ -10,7 +10,7 @@ git clone https://github.com/eigemx/createcpp
 install via pip:
 ```
 cd createcpp
-pip install -e .
+pip install .
 ```
 
 ## Usage
