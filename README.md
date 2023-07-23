@@ -1,5 +1,5 @@
 # createcpp
-Quickly create a C++ project with CMake, clang-format, clang-tidy.
+`createcpp` is my personal tool to quickly create a C++ project with CMake, and my own setup for clang-format and clang-tidy.
 
 ## Installation
 clone the repo: 

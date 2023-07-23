@@ -6,7 +6,7 @@ from ._data import file_to_function_map
 
 def main():
     # check fir project name in args
-    if len(sys.argv) < 2:
+    if len(sys.argv) != 2:
         print("Please provide a project name")
         return
 
