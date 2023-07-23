@@ -39,7 +39,7 @@ def clang_tidy_file() -> str:
     return """Checks: 
         '-*,modernize-*, readability-*, performance-*, misc-*, cppcoreguidelines-*,
          -cppcoreguidelines-avoid-magic-numbers, 
-         -modernize-use-nodiscard'
+         -modernize-use-nodiscard, -readability-magic-numbers'
 WarningsAsErrors: '*'"""
 
 
